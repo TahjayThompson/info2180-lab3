@@ -9,11 +9,61 @@ const controls = document.getElementsByClassName("controls")[0];
 const button = document.getElementsByClassName("btn")[0];
 
 const divs = board.querySelectorAll('div');
+let plays = [null,null,null,null,null,null,null,null,null];
+let clicke = true;
+let play ="X";
+
 
 divs.forEach((elem,index)=>{
     elem.setAttribute("class","square");
     console.log(elem,index)
+
+    elem.addEventListener('click',function(){
+        if(clicke){
+            clicke=false;
+        }
+        else{
+            clicke=true;
+        }
+
+
+        plays[index]=play;
+        elem.innerHTML=play;
+        elem.classList.add(play);
+
+
+        if(play=="O"){
+            play='X';
+            plays[index]=play;
+            elem.innerHTML=play;
+            elem.classList.add(play);
+    
+        }
+        else{
+            play="O";
+            plays[index]=play;
+            elem.innerHTML=play;
+            elem.classList.add(play);
+    
+        }
+
+        console.log(clicke)
+        console.log(plays)
+    });
+
+    elem.addEventListener('mouseover',function(){
+        elem.classList.add('hover');
+
+    });
+    elem.addEventListener('mouseout',function(){
+        elem.classList.remove('hover');
+
+    });
+
+ 
 });
+
+
 
 
 console.log(divs)
