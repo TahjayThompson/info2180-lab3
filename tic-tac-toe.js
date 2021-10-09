@@ -9,7 +9,6 @@ window.onload = function() {
     const button = document.getElementsByClassName("btn")[0];
 
     const elem = board.querySelectorAll('div');
-    let plays = [null,null,null,null,null,null,null,null,null];
     let play ="X";
 
 
@@ -60,12 +59,10 @@ window.onload = function() {
                     elem[0].innerHTML=="O" && elem[4].innerHTML=="O" && elem[8].innerHTML=="O" ){
                     status.innerHTML='Congratulations! O is the Winner!"'
                     status.classList.add('you-won');
+                    
             
                 }
-                else{
-                }
-            console.log(elem[3].innerHTML =="O")
-               
+                       
 
             });
 
@@ -80,9 +77,22 @@ window.onload = function() {
 
             });
     }
-    console.log(plays);
 
     
+    button.addEventListener('click',()=>{
+        for(let i=0; i<=8;i++){
+            elem[i].innerHTML=null;
+            elem[i].style.pointerEvents = 'auto';
+            status.innerHTML='Move your mouse over a square and click to play an X or an O.'
+            status.classList.remove('you-won');
+            elem[i].classList.remove('O');
+            elem[i].classList.remove('X');
+
+
+        }
+     
+    });
+
 
 
 
